@@ -5,6 +5,9 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "dependencies": {
+    "codemirror": "^5.8.0",
+    "diff-match-patch": "^1.0.0",
+    "phosphor-messaging": "^1.0.6",
     "phosphor-widget": "^1.0.0-rc.0"
   },
   "devDependencies": {
