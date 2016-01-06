@@ -27,23 +27,3 @@ body {
   min-width: 100px;
   min-height: 100px;
 }
-
-
-.red {
-  background: #E74C3C;
-}
-
-
-.yellow {
-  background: #F1C40F;
-}
-
-
-.green {
-  background: #27AE60;
-}
-
-
-.blue {
-  background: #3498DB;
-}
