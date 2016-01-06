@@ -63,13 +63,17 @@ class CodeMirrorWidget extends Widget {
       return;
     }
     this._editor.refresh();
+    this._dirty = false;
   }
 
   /**
    * A message handler invoked on an `'after-show'` message.
    */
   protected onAfterShow(msg: Message): void {
-    if (this._dirty) this._editor.refresh();
+    if (this._dirty) {
+      this._editor.refresh();
+      this._dirty = false;
+    }
   }
 
   /**
@@ -81,6 +85,7 @@ class CodeMirrorWidget extends Widget {
     } else {
       this._editor.setSize(msg.width, msg.height);
     }
+    this._dirty = false;
   }
 
   private _editor: CodeMirror.Editor = null;
