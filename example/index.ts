@@ -8,16 +8,22 @@
 'use strict';
 
 import {
-  Widget
-} from 'phosphor-widget';
+  CodeMirrorWidget
+} from '../lib';
+
+import 'codemirror/mode/javascript/javascript';
 
 import './index.css';
 
 
-
 function main(): void {
 
-
+  let widget = new CodeMirrorWidget({ mode: 'text/typescript',
+    lineNumbers: true,
+    tabSize: 2,
+  });
+  widget.id = 'main';
+  widget.attach(document.body);
 }
 
 
