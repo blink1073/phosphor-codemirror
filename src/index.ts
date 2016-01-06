@@ -53,9 +53,6 @@ class CodeMirrorWidget extends Widget {
     if (options && options.mode) {
        this.setModeByName(options.mode);
     }
-    this._editor.on('change', (instance, change) => {
-      this._text = this._editor.getDoc().getValue();
-    });
   }
 
   /**
@@ -72,9 +69,8 @@ class CodeMirrorWidget extends Widget {
    * Update the text in the widget.
    */
   updateText(text: string): void {
-    this._text = text;
+    this._dirtyText = text;
     if (!this.isAttached || !this.isVisible) {
-      this._dirty = true;
       return;
     }
     this.update();
@@ -126,10 +122,10 @@ class CodeMirrorWidget extends Widget {
    */
   protected onAfterAttach(msg: Message): void {
     if (!this.isVisible) {
-      this._dirty = true;
+      this._dirtyText = this._editor.getDoc().getValue();
       return;
     }
-    if (this._dirty) {
+    if (this._dirtyText.length) {
       this.update();
       this._editor.refresh();
     }
@@ -139,7 +135,7 @@ class CodeMirrorWidget extends Widget {
    * A message handler invoked on an `'after-show'` message.
    */
   protected onAfterShow(msg: Message): void {
-    if (this._dirty) {
+    if (this._dirtyText.length) {
       this.update();
       this._editor.refresh();
     }
@@ -166,10 +162,10 @@ class CodeMirrorWidget extends Widget {
    * position of the cursor in the new text.
    */
   protected onUpdateRequest(msg: Message): void {
-    this._dirty = false;
     let doc = this._editor.getDoc();
     let oldText = doc.getValue();
-    let text = this._text;
+    let text = this._dirtyText;
+    this._dirtyText = '';
     if (oldText !== text) {
       // TODO: do something smart with all the selections
 
@@ -238,6 +234,5 @@ class CodeMirrorWidget extends Widget {
   }
 
   private _editor: CodeMirror.Editor = null;
-  private _text = '';
-  private _dirty = false;
+  private _dirtyText = '';
 }
