@@ -1,5 +1,5 @@
 phosphor-codemirror
-=================
+===================
 
 [![Build Status](https://travis-ci.org/phosphorjs/phosphor-codemirror.svg)](https://travis-ci.org/phosphorjs/phosphor-codemirror?branch=master)
 [![Coverage Status](https://coveralls.io/repos/phosphorjs/phosphor-codemirror/badge.svg?branch=master&service=github)](https://coveralls.io/github/phosphorjs/phosphor-codemirror?branch=master)
