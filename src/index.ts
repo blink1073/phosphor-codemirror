@@ -28,11 +28,6 @@ import {
  */
 const EDITOR_CLASS = 'p-CodeMirrorWidget';
 
-/**
- * The class name added to focused instances.
- */
-const FOCUSED_CLASS = 'p-mod-focused';
-
 
 /**
  * A widget which hosts a CodeMirror editor.
@@ -47,8 +42,6 @@ class CodeMirrorWidget extends Widget {
     super();
     this.addClass(EDITOR_CLASS);
     this._editor = CodeMirror(this.node, options);
-    this._editor.on('focus', () => this.addClass(FOCUSED_CLASS));
-    this._editor.on('blur', () => this.removeClass(FOCUSED_CLASS));
   }
 
   /**
