@@ -66,7 +66,7 @@ class CodeMirrorWidget extends Widget {
    * A message handler invoked on an `'after-attach'` message.
    */
   protected onAfterAttach(msg: Message): void {
-    if (!this.isHidden) {
+    if (this.isHidden) {
       this._dirty = true;
       return;
     }
