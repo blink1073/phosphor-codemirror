@@ -72,7 +72,6 @@ class CodeMirrorWidget extends Widget {
     }
     this._editor.refresh();
     this._dirty = false;
-    this._editor.focus();
   }
 
   /**
@@ -83,7 +82,6 @@ class CodeMirrorWidget extends Widget {
       this._editor.refresh();
       this._dirty = false;
     }
-    this._editor.focus();
   }
 
   /**
