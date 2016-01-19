@@ -66,12 +66,13 @@ class CodeMirrorWidget extends Widget {
    * A message handler invoked on an `'after-attach'` message.
    */
   protected onAfterAttach(msg: Message): void {
-    if (!this.isVisible) {
+    if (!this.isHidden) {
       this._dirty = true;
       return;
     }
     this._editor.refresh();
     this._dirty = false;
+    this._editor.focus();
   }
 
   /**
@@ -82,6 +83,7 @@ class CodeMirrorWidget extends Widget {
       this._editor.refresh();
       this._dirty = false;
     }
+    this._editor.focus();
   }
 
   /**
